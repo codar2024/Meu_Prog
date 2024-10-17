@@ -1,5 +1,9 @@
 #include <iostream>
 #include <ctime> 
+#include <fstream> 
+#include <string>
+
+using namespace std;
 
 /**
  * Este conjunto de código mostras definições e utilização do conceito de ponteiros em C/C++.
@@ -50,10 +54,98 @@ void separador() {
     mudaLinha();  // Pula linha após imprimir os asteriscos
 }
 
+// Função para exemplo de ponteiro simples
+void exemploPonteiroSimples() {
+        std::cout << "--- Exemplo 02 --->" << std::endl;
+        int var_ex02 = 20;
+        int *ptr_ex02;
+        ptr_ex02 = &var_ex02; 
+        std::cout << "Mostra o valor atual da variável 'var_ex02': " << var_ex02 << std::endl;
+        std::cout << "Mostra o endereço de memória onde se encontra a variável 'var_ex02': " << ptr_ex02 << std::endl;
+        std::cout << "Mostra o valor da variável 'var_ex02', apontada pelo ponteiro 'ptr_ex02': " << *ptr_ex02 << std::endl;
+        mudaLinha();
+}
+
+// Função para exemplo de ponteiro com array
+void exemploPonteiroArray() {
+      std::cout << "--- Exemplo 05 --->" << std::endl;
+        int numeros[5] = {10, 20, 30, 40, 50}; // Definir e inicializar um 'array' de números inteiros.
+        for (int i = 0; i < 5; ++i) {
+            std::cout << numeros[i] << " ";
+        }
+        std::cout << std::endl;
+        int *ptr = numeros; // Definir e inicializar um 'ponteiro' para o 'array' de números inteiros.
+        std::cout << "Endereço de memória onde está o primeiro elemento do 'array': " << ptr << std::endl;
+        std::cout << "Valor do primeiro elemento do 'array', usando o índice (index): " << numeros[0] << std::endl;
+        std::cout << "Valor do primeiro elemento do 'array', usando o endereço (pointer): " << *ptr << std::endl;
+        // Nota: se executarmos o código várias vezes verificamos que os endereços de memória são diferentes em cada execução.
+        mudaLinha();
+      
+}
+
+// Função para exemplo de ponteiro para ponteiro
+void exemploPonteiroParaPonteiro() {
+    mudaLinha();
+}
+
+// Função para carregar e exibir o conteúdo da teoria a partir de um arquivo de texto
+void mostrarMateria(const std::string& nomeFicheiro) {
+    std::ifstream ficheiro(nomeFicheiro);
+    std::string linha;
+    
+    if (ficheiro.is_open()) {
+        while (getline(ficheiro, linha)) {
+            std::cout << linha << std::endl;
+        }
+        ficheiro.close();
+    } else {
+        std::cout << "Erro ao abrir o ficheiro da materia: " << nomeFicheiro << std::endl;
+    }
+    mudaLinha();
+}
+
+// Função para mostrar o menu e escolher a opção
+void mostrarMenu() {
+    int opcao = 0;
+    do {
+        separador();
+        std::cout << "Menu de Opcoes:\n";
+        std::cout << "1. Exemplo de ponteiro simples\n";
+        std::cout << "2. Exemplo de ponteiro com array\n";
+        std::cout << "3. Exemplo de ponteiro para ponteiro\n";
+        std::cout << "4. Sair\n";
+        std::cout << "Escolha uma opcao: ";
+        std::cin >> opcao;
+
+        switch (opcao) {
+            case 1:
+                mostrarMateria("materia_ponteiro_simples.txt");
+                exemploPonteiroSimples();
+                break;
+            case 2:
+                mostrarMateria("materia_ponteiro_array.txt");
+                exemploPonteiroArray();
+                break;
+            case 3:
+                mostrarMateria("materia_ponteiro_para_ponteiro.txt");
+                exemploPonteiroParaPonteiro();
+                break;
+            case 4:
+                std::cout << "A sair...\n";
+                break;
+            default:
+                std::cout << "Opcao invalida! Tente novamente.\n";
+        }
+    } while (opcao != 4);
+
+}
+
 int main() {
     separador();
     meuCarimbo();
     mudaLinha();
+
+    mostrarMenu();
     
     /** 
     * O operador '&' é unário e significa 'endereço de...'. Por exemplo, &codPostal quer dizer 'endereço da variável codPostal'.
@@ -65,7 +157,7 @@ int main() {
         int numero = 10;
         std::cout << numero  << std::endl;
         std::cout << &numero << std::endl;
-mudaLinha();
+        mudaLinha();
 /**
  * Vamos considerar que dispomos de um tipo de dados para representar endereços.
  * Chamamos a este tipo "tipo apontador" (Pointer Type).

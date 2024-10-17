@@ -1,0 +1,9 @@
+ *Materia
+ *Vamos considerar que dispomos de um tipo de dados para representar endereços.
+ * Chamamos a este tipo "tipo apontador" (Pointer Type).
+ * Agora, de alguma forma o compilador tem que saber a que tipo de variável corresponde o endereço.
+ * Recordar que um 'char' ocupa 1 byte, um 'int' e um 'float' ocupam 4 byte's, mas com formato diferente
+ * e por aí fora. Ou seja, precisamos de saber para que é que aponta o nosso tipo apontador...
+ * Para se dclarar um ponteiro usamos a sintaxe 'tipo*'. Isto lê-se "apontador de tipo" ou, mais facilmente, 
+ * "tipo pointer", e representa um tipo de dados que corresponde a endereços do tipo "tipo"...
+ * Por exemplo, 'char*' é um 'char pointer'. Variáveis do tipo 'char*' contêm endereços do tipo 'char'... 

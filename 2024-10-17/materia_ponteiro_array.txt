@@ -1,0 +1,4 @@
+ *Materia
+ *int numeros[5] = {10, 20, 30, 40, 50};  Definir e inicializar um 'array' de números inteiros.
+ *int *ptr = numeros;  Definir e inicializar um 'ponteiro' para o 'array' de números inteiros.
+ *Nota: se executarmos o código várias vezes verificamos que os endereços de memória são diferentes em cada execução.
